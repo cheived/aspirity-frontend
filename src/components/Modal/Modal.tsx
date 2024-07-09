@@ -1,4 +1,3 @@
-"use client"
 import Image from "next/image";
 
 interface Props {
@@ -15,9 +14,6 @@ const Modal: React.FC<Props> = ({ children, title, tw, setVisible, visible = fal
     // let classList = "bg-bg-modal fixed inset-0 flex flex-col items-center justify-center  max-w-[650px] sm:rounded-xl"
     if (!visible) {
         classList += " hidden"
-        document.body.classList.remove("overflow-hidden")
-    } else {
-        document.body.classList.add("overflow-hidden")
     }
 
     return (

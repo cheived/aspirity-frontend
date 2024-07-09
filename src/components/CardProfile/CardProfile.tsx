@@ -6,7 +6,8 @@ import Tab from "../Tab/Tab";
 interface Data {
     title: string,
     count: number,
-    childrens?: string[]
+    childrens?: string[],
+    href: string
 }
 
 interface Props {

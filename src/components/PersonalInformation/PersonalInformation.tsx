@@ -13,6 +13,8 @@ interface Props {
 const PersonalInformation: React.FC<Props> = ({ tw }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
+
+
     const user = {
         firstName: "Юрий",
         lastName: "Герыш",
@@ -25,17 +27,21 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
         email: "test@gmail.com"
     }
 
-    const labels = [
-        "Имя",
-        "Фамилия",
-        "Отчество",
-        "Дата рожения",
-        "Дата трудоустройства",
-        "Страна",
-        "Город",
-        "Position",
-        "Электронная почта"
-    ]
+    const validation = {
+        textField: {
+            required: "Это поле обязательно"
+        },
+        email:
+        {
+            pattern: {
+                value: /^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/,
+                message: "Невалидный адрес"
+            },
+            required: "Это поле обязательно"
+        }
+
+    }
+
 
     const { handleSubmit, control, formState: { errors } } = useForm({
         defaultValues: user
@@ -43,18 +49,14 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
 
     function handleButtonSave() {
         handleSubmit(data => console.log(data))
-        setModalVisible(false)
+        // setModalVisible(false)
+        // if (errors) { }
     }
 
-    interface IFormInput {
-        firstName: string;
-        lastName: string;
-        iceCreamType: { label: string; value: string };
-    }
+
     const onSubmit = (data: object) => {
         console.log(data)
     };
-
     return (
         <section className={"bg-bg-secondary rounded-xl px-4 py-[30px] sm:p-[30px] " + " " + tw}>
             <div className="mb-8 flex justify-between">
@@ -63,18 +65,54 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
             </div>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="grid gap-6 md:grid-cols-2 ">
-                    {Object.keys(user).map((item, i) => {
 
-                        return (
-                            <Controller
-                                defaultValue={user[item].label}
-                                key={i}
-                                name={item}
-                                control={control}
-                                render={({ field }) => <Input field={{ ...field }} label={labels[i]} userSelect={false} tw={i === 2 ? "md:col-span-2" : null} />}
-                            />
-                        )
-                    })}
+                    <Controller
+                        name={"firstName"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Имя"} userSelect={false} />}
+                    />
+                    <Controller
+                        name={"lastName"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Фамилия"} userSelect={false} />}
+                    />
+                    <Controller
+                        name={"fatherName"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Отчество"} userSelect={false} tw="md:col-span-2" />}
+                    />
+                    <Controller
+                        name={"birthday"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Дата рождения"} userSelect={false} />}
+                    />
+                    <Controller
+                        name={"employeeDate"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Дата трудоустройства"} userSelect={false} />}
+                    />
+                    <Controller
+                        name={"country"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Страна"} userSelect={false} />}
+                    />
+                    <Controller
+                        name={"city"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Город"} userSelect={false} />}
+                    />
+                    <Controller
+                        name={"position"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Должность"} userSelect={false} />}
+                    />
+                    <Controller
+                        name={"email"}
+                        control={control}
+                        render={({ field }) => <Input field={{ ...field }} label={"Электронная почта"} userSelect={false} />}
+                    />
+
+
 
                 </div>
             </form>
@@ -83,16 +121,60 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
             <Modal title="Персональная информация" visible={modalVisible} setVisible={setModalVisible}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="grid gap-6 md:grid-cols-2 pb-10">
-                        {Object.keys(user).map((item, i) => {
-                            return (
-                                <Controller
-                                    key={i}
-                                    name={item}
-                                    control={control}
-                                    render={({ field }) => <Input field={{ ...field }} label={labels[i]} tw={i === 2 ? "md:col-span-2" : null} />}
-                                />
-                            )
-                        })}
+                        {/* {console.log(errors.firstName?.message)} */}
+                        <Controller
+                            rules={validation.textField}
+                            name={"firstName"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.firstName?.message} label={"Имя"} />}
+                        />
+                        <Controller
+                            rules={validation.textField}
+                            name={"lastName"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.lastName?.message} label={"Фамилия"} />}
+                        />
+                        <Controller
+                            rules={validation.textField}
+                            name={"fatherName"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.fatherName?.message} label={"Отчество"} tw="md:col-span-2" />}
+                        />
+                        <Controller
+                            rules={validation.textField}
+                            name={"birthday"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.birthday?.message} label={"Дата рождения"} />}
+                        />
+                        <Controller
+                            rules={validation.textField}
+                            name={"employeeDate"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.employeeDate?.message} label={"Дата трудоустройства"} />}
+                        />
+                        <Controller
+                            rules={validation.textField}
+                            name={"country"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.country?.message} label={"Страна"} />}
+                        />
+                        <Controller
+                            rules={validation.textField}
+                            name={"city"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.city?.message} label={"Город"} />}
+                        />
+                        <Controller
+                            rules={validation.textField}
+                            name={"position"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.position?.message} label={"Position"} />}
+                        />
+                        <Controller
+                            rules={validation.email}
+                            name={"email"}
+                            control={control}
+                            render={({ field }) => <Input field={{ ...field }} error={errors.email?.message} label={"Электронная почта"} />} />
                     </div>
                     <Button onClick={() => handleButtonSave()} tw="bg-bg-accent w-full  hover:bg-state-blue-hover focus:bg-state-blue-focused transition">Сохранить</Button>
                 </form>

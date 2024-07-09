@@ -1,7 +1,4 @@
-"use client"
 import Image from "next/image";
-import { use } from "react";
-import { Controller, Field } from "react-hook-form";
 
 interface Props {
     search?: boolean,
@@ -13,7 +10,7 @@ interface Props {
     value?: string,
     userSelect?: boolean,
     error?: string,
-    field?: Field
+    field?: object
 }
 
 

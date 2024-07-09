@@ -8,7 +8,7 @@ interface Props {
     color?: string,
     children?: string,
     tw?: string,
-    onClick?: Dispatch<>
+    onClick?: any
 }
 
 const Button: React.FC<Props> = ({ before, after, color, children, tw, onClick }) => {
