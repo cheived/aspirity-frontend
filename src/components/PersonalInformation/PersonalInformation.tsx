@@ -43,6 +43,7 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
 
     function handleButtonSave() {
         handleSubmit(data => console.log(data))
+        setModalVisible(false)
     }
 
     interface IFormInput {
@@ -93,7 +94,7 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
                             )
                         })}
                     </div>
-                    <Button onClick={() => handleButtonSave()} tw="bg-bg-accent w-full">Сохранить</Button>
+                    <Button onClick={() => handleButtonSave()} tw="bg-bg-accent w-full  hover:bg-state-blue-hover focus:bg-state-blue-focused transition">Сохранить</Button>
                 </form>
             </Modal>
         </section>

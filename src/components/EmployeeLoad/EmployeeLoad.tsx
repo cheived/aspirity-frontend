@@ -63,7 +63,7 @@ const EmployeeLoad: React.FC<Props> = ({ tw }) => {
                     </div>
                 </div>
             </div>
-            <Button onClick={() => setModalVisible(true)} tw="w-full bg-bg-accent">Посмотреть всю загрузку</Button>
+            <Button onClick={() => setModalVisible(true)} tw="w-full bg-bg-accent hover:bg-state-blue-hover focus:bg-state-blue-focused transition">Посмотреть всю загрузку</Button>
             <Modal title="Команда" visible={modalVisible} setVisible={setModalVisible}>
                 <div className="flex flex-col gap-4">
                     {team.map((item, i) => {

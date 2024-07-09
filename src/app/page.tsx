@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <div className="max-w-[1494px] mx-auto pb-6" >
       <Header />
-      <Button className="my-2 mx-2" color="text-text-tertiary" before="/img/chevron-left.svg">Вернуться к сотрудикам</Button>
+      <Button tw="my-2 mx-2" color="text-text-tertiary" before="/img/chevron-left.svg">Вернуться к сотрудикам</Button>
       <div className="flex flex-wrap gap-4 ">
         <CardProfile tw="w-full" data={tabs} />
         <PersonalInformation tw="grow h-fit" />
