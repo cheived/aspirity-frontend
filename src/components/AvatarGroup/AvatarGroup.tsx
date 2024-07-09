@@ -1,18 +1,7 @@
 import Avatar from "../Avatar/Avatar";
 
-const team = [
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-    { name: "John Smith", position: "Junior UI/UX designer" },
-]
 
-export default function AvatarGroup({ limit }) {
+export default function AvatarGroup({ limit, team }) {
     limit = 7
     return (
         <div className="flex items-center">

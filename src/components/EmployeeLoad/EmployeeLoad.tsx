@@ -25,7 +25,7 @@ export default function EmployeeLoad({ className }: { className?: string }) {
     return (
         <section className={"bg-bg-secondary p-[30px] rounded-xl" + " " + className}>
             <div className="flex justify-between mb-10">
-                <p className="text-h5 text-text-primary">Загрузка сотрудика</p>
+                <p className="text-h5 text-text-primary">Загрузка сотрудника</p>
                 <p className="text-state-error-focused text-button">100%</p>
             </div>
             <div className="grid grid-cols-2 grid-rows-3 gap-y-[25px] mb-10">
