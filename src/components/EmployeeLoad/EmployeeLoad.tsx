@@ -19,11 +19,15 @@ const team = [
     { name: "John Smith", position: "Junior UI/UX designer" },
 ]
 
+interface Props {
+    tw: string
+}
 
-export default function EmployeeLoad({ className }: { className?: string }) {
+
+const EmployeeLoad: React.FC<Props> = ({ tw }) => {
     const [modalVisible, setModalVisible] = useState(false);
     return (
-        <section className={"bg-bg-secondary px-4 py-[30px] sm:p-[30px] rounded-xl" + " " + className}>
+        <section className={"bg-bg-secondary px-4 py-[30px] sm:p-[30px] rounded-xl" + " " + tw}>
             <div className="flex justify-between mb-10">
                 <p className="text-title3 sm:text-h5 text-text-primary">Загрузка сотрудника</p>
                 <p className="text-state-error-focused text-button">100%</p>
@@ -59,7 +63,7 @@ export default function EmployeeLoad({ className }: { className?: string }) {
                     </div>
                 </div>
             </div>
-            <Button onClick={() => setModalVisible(true)} className="w-full bg-bg-accent">Посмотреть всю загрузку</Button>
+            <Button onClick={() => setModalVisible(true)} tw="w-full bg-bg-accent">Посмотреть всю загрузку</Button>
             <Modal title="Команда" visible={modalVisible} setVisible={setModalVisible}>
                 <div className="flex flex-col gap-4">
                     {team.map((item, i) => {
@@ -78,3 +82,5 @@ export default function EmployeeLoad({ className }: { className?: string }) {
         </section >
     )
 }
+
+export default EmployeeLoad

@@ -1,11 +1,23 @@
 "use client"
 import Image from "next/image";
 import { use } from "react";
-import { Controller } from "react-hook-form";
+import { Controller, Field } from "react-hook-form";
+
+interface Props {
+    search?: boolean,
+    clear?: boolean,
+    select?: boolean,
+    label?: string,
+    placeholder?: string,
+    tw?: string,
+    value?: string,
+    userSelect?: boolean,
+    error?: string,
+    field?: Field
+}
 
 
-export default function Input({ search = false, clear = false, select = false, label, placeholder, className, value, error, userSelect = true, defaultValue, field }:
-    { search?: boolean, clear?: boolean, select?: boolean, label?: string, placeholder?: string, className?: string, value?: string, userSelect?: boolean }) {
+const Input: React.FC<Props> = ({ search = false, clear = false, select = false, userSelect = true, label, placeholder, tw, error, field }) => {
     let classList = "border-border-primary border-[1px] px-3.5 py-2 flex gap-1 rounded relative"
     if (error) {
         classList += " border-border-error"
@@ -13,7 +25,7 @@ export default function Input({ search = false, clear = false, select = false, l
 
     return (
         <>
-            <div className={classList + " " + className}>
+            <div className={classList + " " + tw}>
                 {search ? <Image src="/img/search.svg" alt="search" width={24} height={24} /> : null}
                 <input {...field} placeholder={placeholder} className={"outline-0 color text-subtitle2 text-text-secondary bg-[#ffffff00] w-full " + " " + (!userSelect ? "pointer-events-none" : null)} />
                 {label ? <p className="text-text-secondary text-caption absolute -top-2 left-3 ">{label}</p> : null}
@@ -27,3 +39,5 @@ export default function Input({ search = false, clear = false, select = false, l
         </>
     )
 }
+
+export default Input

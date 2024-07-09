@@ -6,7 +6,11 @@ import Button from "../Button/Button";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 
 
-export default function PersonalInformation({ className }) {
+interface Props {
+    tw: string
+}
+
+const PersonalInformation: React.FC<Props> = ({ tw }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
     const user = {
@@ -46,12 +50,12 @@ export default function PersonalInformation({ className }) {
         lastName: string;
         iceCreamType: { label: string; value: string };
     }
-    const onSubmit = data => {
+    const onSubmit = (data: object) => {
         console.log(data)
     };
 
     return (
-        <section className={"bg-bg-secondary rounded-xl px-4 py-[30px] sm:p-[30px] " + " " + className}>
+        <section className={"bg-bg-secondary rounded-xl px-4 py-[30px] sm:p-[30px] " + " " + tw}>
             <div className="mb-8 flex justify-between">
                 <p className="text-text-primary text-title3 sm:text-h5">Персональная информация</p>
                 <button className="text-subtitle2 text-icons-tertiary" onClick={() => setModalVisible(true)}>Изменить</button>
@@ -66,7 +70,7 @@ export default function PersonalInformation({ className }) {
                                 key={i}
                                 name={item}
                                 control={control}
-                                render={({ field }) => <Input field={{ ...field }} label={labels[i]} userSelect={false} className={i === 2 ? "md:col-span-2" : null} />}
+                                render={({ field }) => <Input field={{ ...field }} label={labels[i]} userSelect={false} tw={i === 2 ? "md:col-span-2" : null} />}
                             />
                         )
                     })}
@@ -84,14 +88,17 @@ export default function PersonalInformation({ className }) {
                                     key={i}
                                     name={item}
                                     control={control}
-                                    render={({ field }) => <Input field={{ ...field }} label={labels[i]} className={i === 2 ? "md:col-span-2" : null} />}
+                                    render={({ field }) => <Input field={{ ...field }} label={labels[i]} tw={i === 2 ? "md:col-span-2" : null} />}
                                 />
                             )
                         })}
                     </div>
-                    <Button onClick={() => handleButtonSave()} className="bg-bg-accent w-full">Сохранить</Button>
+                    <Button onClick={() => handleButtonSave()} tw="bg-bg-accent w-full">Сохранить</Button>
                 </form>
             </Modal>
         </section>
     )
 }
+
+
+export default PersonalInformation
