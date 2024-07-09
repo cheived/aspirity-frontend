@@ -23,7 +23,7 @@ const Tab: React.FC<Props> = ({ data, tw }) => {
     return (
         <nav className="flex justify-center md:justify-start">
             {data ? data.map((item: Data, i: number) => {
-                let classList = "px-4 py-2.5 text-button flex gap-2 items-center text-button uppercase relative"
+                let classList = "px-4 py-2.5 text-button flex gap-2 items-center text-center text-button uppercase relative"
                 if (active == item.href) {
                     classList += " text-text-primary"
                 } else {
