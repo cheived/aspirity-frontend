@@ -22,11 +22,11 @@ export default function Home() {
           {/* <Button before="/img/burger.svg" /> */}
         </div>
       </header>
-      <Button className="my-2 mt-3" color="text-text-tertiary" before="/img/chevron-left.svg">Вернуться к сотрудикам</Button>
-      <div className="grid gap-4 grid-cols-2">
-        <CardProfile className="basis-full col-span-2" data={tabs} />
-        <PersonalInformation className="" />
-        <EmployeeLoad />
+      <Button className="my-2 mx-2" color="text-text-tertiary" before="/img/chevron-left.svg">Вернуться к сотрудикам</Button>
+      <div className="flex flex-wrap gap-4 ">
+        <CardProfile className="w-full" data={tabs} />
+        <PersonalInformation className="w-[820px] h-fit" />
+        <EmployeeLoad className="grow" />
       </div>
 
     </div>

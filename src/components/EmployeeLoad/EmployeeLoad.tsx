@@ -1,15 +1,34 @@
+"use client"
 import Image from "next/image";
 import Avatar from "../Avatar/Avatar";
+import AvatarGroup from "../AvatarGroup/AvatarGroup";
+import Button from "../Button/Button";
+import Modal from "../Modal/Modal";
+import { useState } from "react";
 
 
-export default function EmployeeLoad() {
+const team = [
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+    { name: "John Smith", position: "Junior UI/UX designer" },
+]
+
+
+export default function EmployeeLoad({ className }: { className?: string }) {
+    const [modalVisible, setModalVisible] = useState(false);
     return (
-        <section className="bg-bg-secondary p-[30px] rounded-xl ">
+        <section className={"bg-bg-secondary p-[30px] rounded-xl" + " " + className}>
             <div className="flex justify-between mb-10">
                 <p className="text-h5 text-text-primary">Загрузка сотрудика</p>
                 <p className="text-state-error-focused text-button">100%</p>
             </div>
-            <div className="grid grid-cols-2 grid-rows-3 gap-y-10">
+            <div className="grid grid-cols-2 grid-rows-3 gap-y-[25px] mb-10">
                 <div className="col-span-">
                     <p className="text-text-tertiary text-subtitle1 mb-2">Название проекта</p>
                     <p className="text-text-primary text-subtitle1">MedPoint 24</p>
@@ -27,7 +46,9 @@ export default function EmployeeLoad() {
                 </div>
                 <div className="col-span-">
                     <p className="text-text-tertiary text-subtitle1 mb-2">Команда</p>
-                    <p className="text-text-primary text-subtitle1">MedPoint 24</p>
+                    <button onClick={() => setModalVisible(true)}>
+                        <AvatarGroup limit={7} team={team} />
+                    </button>
                 </div>
                 <div className="col-span-2">
                     <p className="text-text-tertiary text-subtitle1 mb-2">Сроки работы</p>
@@ -38,6 +59,22 @@ export default function EmployeeLoad() {
                     </div>
                 </div>
             </div>
-        </section>
+            <Button className="w-full bg-bg-accent">Посмотреть всю загрузку</Button>
+            <Modal title="Команда" visible={modalVisible} setVisible={setModalVisible}>
+                <div className="flex flex-col gap-4">
+                    {team.map((item, i) => {
+                        return (
+                            <div key={i} className="flex gap-2">
+                                <Avatar size={48} />
+                                <div>
+                                    <p className="text-subtitle1 text-text-primary">{item.name}</p>
+                                    <p className="text-body2 text-text-secondary">{item.position}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                </div>
+            </Modal>
+        </section >
     )
 }

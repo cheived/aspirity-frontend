@@ -3,7 +3,7 @@ import Input from "../Input/Input";
 
 export default function PersonalInformation({ className }) {
     return (
-        <section className={"bg-bg-secondary rounded-xl p-[30px]  w-full" + " " + className}>
+        <section className={"bg-bg-secondary rounded-xl p-[30px]" + " " + className}>
             <div className="mb-8 flex justify-between">
                 <p className="text-text-primary text-h5">Персональная информация</p>
                 <button className="text-subtitle2 text-icons-tertiary">Изменить</button>
