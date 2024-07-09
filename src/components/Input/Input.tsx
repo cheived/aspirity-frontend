@@ -1,9 +1,11 @@
+"use client"
 import Image from "next/image";
 import { use } from "react";
+import { Controller } from "react-hook-form";
 
 
-export default function Input({ search = false, clear = false, select = false, label, placeholder, className, value, error, userSelect = true }:
-    { search?: boolean, clear?: boolean, select?: boolean, label?: string, placeholder?: string, className?: string, value?: string, error?: string, userSelect?: boolean }) {
+export default function Input({ search = false, clear = false, select = false, label, placeholder, className, value, error, userSelect = true, defaultValue, field }:
+    { search?: boolean, clear?: boolean, select?: boolean, label?: string, placeholder?: string, className?: string, value?: string, userSelect?: boolean }) {
     let classList = "border-border-primary border-[1px] px-3.5 py-2 flex gap-1 rounded relative"
     if (error) {
         classList += " border-border-error"
@@ -13,7 +15,7 @@ export default function Input({ search = false, clear = false, select = false, l
         <>
             <div className={classList + " " + className}>
                 {search ? <Image src="/img/search.svg" alt="search" width={24} height={24} /> : null}
-                <input defaultValue={value} placeholder={placeholder} className={"outline-0 color text-subtitle2 text-text-secondary bg-[#ffffff00] w-full " + " " + (!userSelect ? "pointer-events-none" : null)} />
+                <input {...field} placeholder={placeholder} className={"outline-0 color text-subtitle2 text-text-secondary bg-[#ffffff00] w-full " + " " + (!userSelect ? "pointer-events-none" : null)} />
                 {label ? <p className="text-text-secondary text-caption absolute -top-2 left-3 ">{label}</p> : null}
                 {clear || select ? <div className="flex">
                     {clear ? <Image src="/img/exit.svg" alt="search" width={24} height={24} /> : null}
