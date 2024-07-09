@@ -9,12 +9,12 @@ interface Data {
     childrens: string[]
 }
 
-export default function Tab({ data }: { data: Data }) {
+export default function Tab({ data, className }: { data: Data, className?: string }) {
 
     const [active, setActive] = useState();
 
     return (
-        <nav className="flex">
+        <nav className="flex justify-center md:justify-start">
             {data ? data.map((item, i) => {
                 let classList = "px-4 py-2.5 text-button flex gap-2 items-center text-button uppercase relative"
                 if (active == i) {

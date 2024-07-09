@@ -13,8 +13,8 @@ const tabs = [
 
 export default function Home() {
   return (
-    <div className="max-w-[1494px] mx-auto" >
-      <header className="flex items-center justify-between py-4">
+    <div className="max-w-[1494px] mx-auto pb-6" >
+      <header className="flex items-center justify-between py-6 px-4 md:py-4 md:px-0">
         <Image src={"/img/Logo.svg"} width={180} height={40} alt="logo" className="" />
         <div className="flex gap-2 items-center">
           <Menu sizes={24} />
@@ -25,7 +25,7 @@ export default function Home() {
       <Button className="my-2 mx-2" color="text-text-tertiary" before="/img/chevron-left.svg">Вернуться к сотрудикам</Button>
       <div className="flex flex-wrap gap-4 ">
         <CardProfile className="w-full" data={tabs} />
-        <PersonalInformation className="w-[820px] h-fit" />
+        <PersonalInformation className="grow h-fit" />
         <EmployeeLoad className="grow" />
       </div>
 
