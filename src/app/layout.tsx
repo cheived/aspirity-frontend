@@ -27,7 +27,7 @@ export default function RootLayout({
       <body className={inter.className + " bg-bg-primary"}>
         <div className="max-w-[1494px] mx-auto pb-6" >
           <Header />
-          <Button tw="my-2 mx-2" color="text-text-tertiary" before="/img/chevron-left.svg">Вернуться к сотрудикам</Button>
+          <Button tw="my-2 mx-2 text-text-tertiary" before="/img/chevron-left.svg" transparent>Вернуться к сотрудикам</Button>
           <div className="flex flex-wrap gap-4 ">
             <CardProfile tw="w-full" data={tabs} />
             {/* <PersonalInformation tw="grow h-fit" />

@@ -43,8 +43,9 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
     }
 
 
-    const { handleSubmit, control, formState: { errors } } = useForm({
-        defaultValues: user
+    const { handleSubmit, control, formState: { errors, isValid } } = useForm({
+        defaultValues: user,
+        mode: "onChange"
     });
 
     function handleButtonSave() {
@@ -176,7 +177,7 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
                             control={control}
                             render={({ field }) => <Input field={{ ...field }} error={errors.email?.message} label={"Электронная почта"} />} />
                     </div>
-                    <Button onClick={() => handleButtonSave()} tw="bg-bg-accent w-full  hover:bg-state-blue-hover focus:bg-state-blue-focused transition">Сохранить</Button>
+                    <Button onClick={() => handleButtonSave()} disabled={!isValid ? true : false} tw="w-full ">Сохранить</Button>
                 </form>
             </Modal>
         </section>
