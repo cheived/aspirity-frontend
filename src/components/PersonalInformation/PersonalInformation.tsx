@@ -50,8 +50,7 @@ const PersonalInformation: React.FC<Props> = ({ tw }) => {
 
     function handleButtonSave() {
         handleSubmit(data => console.log(data))
-        // setModalVisible(false)
-        // if (errors) { }
+        setModalVisible(false)
     }
 
 
