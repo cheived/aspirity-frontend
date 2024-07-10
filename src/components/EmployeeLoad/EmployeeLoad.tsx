@@ -32,7 +32,7 @@ const EmployeeLoad: React.FC<Props> = ({ tw }) => {
                 <p className="text-title3 sm:text-h5 text-text-primary">Загрузка сотрудника</p>
                 <p className="text-state-error-focused text-button">100%</p>
             </div>
-            <div className="flex flex-col sm:grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-3 gap-y-[25px] mb-10">
+            <div className="flex flex-col sm:grid grid-cols-1 sm:grid-cols-2 gap-y-[25px] mb-10">
                 <div className="col-span-">
                     <p className="text-text-tertiary text-subtitle1 mb-2">Название проекта</p>
                     <p className="text-text-primary text-subtitle1">MedPoint 24</p>
